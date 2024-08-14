@@ -1,0 +1,82 @@
+/* 目录样式 */
+#post-toc {
+    position: fixed;
+    left: 40px; /* 默认距离浏览器左边 */
+    top: 200px; /* 作为默认的顶部偏移 */
+    background: #ffffff;
+    padding: 15px;
+    border: 1px solid #ddd;
+    overflow-y: auto;
+    max-height: 70vh;
+    z-index: 1000;
+    cursor: move;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.16);
+    border-radius: 8px;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+    display: block; /* 默认显示 */
+}
+
+#post-toc.hidden {
+    display: none; /* 隐藏时 */
+}
+
+#post-toc ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#post-toc ul li {
+    margin-bottom: 5px;
+}
+
+#post-toc h3 {
+    margin: 0 0 10px 0; /* 去掉顶部和底部的间距 */
+    font-size: 18px; /* 自定义字体大小 */
+    font-weight: bold; /* 自定义字体粗细 */
+    color: #494949; /* 自定义颜色 */
+    text-align: center; /* 中心对齐 */
+    padding-bottom: 5px; /* 下方填充，增加分隔感 */
+    border-bottom: 1px solid #ddd; /* 底部边框 */
+}
+
+#post-toc ul li a {
+    text-decoration: none;
+    display: block;
+    padding: 2px 0;
+    transition: color 0.2s ease;
+}
+
+#post-toc ul li a:hover {
+    text-decoration: underline;
+}
+
+/* 目录切换按钮样式 */
+.toc-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1100;
+    padding: 10px 20px;
+    background-color: #487b96;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s ease;
+}
+
+.toc-toggle:hover {
+    background-color: #43677a;
+}
+
+/* 小屏幕上的目录和按钮布局 */
+@media (max-width: 768px) {
+    #post-toc {
+        right: 20px; /* 在按钮左边 */
+        bottom: 70px; /* 调整为在按钮上方 */
+        left: auto; /* 移除左对齐 */
+        top: auto;
+    }
+}
