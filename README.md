@@ -8,6 +8,19 @@
 2. 将文件夹放在插件目录 `~/usr/plugins/`。
 3. 启动插件。
 
+## 隐藏/显示目录按钮
+
+将下方代码插入在 `usr/themes/default/post.php` 文件中。
+
+```
+<!-- 隐藏/显示目录按钮 -->
+<button id="toc-toggle" class="toc-toggle"></button>
+```
+
+插入位置：
+
+![WX20240816-115348@2x](https://github.com/user-attachments/assets/8b48f456-ad76-4467-a44c-3df37e1cce9c)
+
 ## 版本更新
 
 ### V1.0.0: 
