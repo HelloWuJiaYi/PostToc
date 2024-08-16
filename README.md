@@ -21,11 +21,6 @@
 
 ![WX20240816-115348@2x](https://github.com/user-attachments/assets/8b48f456-ad76-4467-a44c-3df37e1cce9c)
 
-
-## 效果
-
-![屏幕录制2024-08-16 12-03-10_1](https://github.com/user-attachments/assets/f37a6e1b-0d18-4526-aec4-96eb7f72a5b6)
-
 ## 版本更新
 
 ### V1.0.0: 
