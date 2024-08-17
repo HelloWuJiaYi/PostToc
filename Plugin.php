@@ -1,7 +1,6 @@
 <?php
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
-
 /**
  * 文章目录：
  * 
@@ -14,6 +13,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
  * @version 1.1.0
  * @link https://www.wujiayi.vip
  */
+
 class PostToc_Plugin implements Typecho_Plugin_Interface
 {
     public static function activate()
@@ -32,7 +32,7 @@ class PostToc_Plugin implements Typecho_Plugin_Interface
             NULL, 
             '<!-- 隐藏/显示目录按钮 -->
 <button id="toc-toggle" class="toc-toggle"></button>',
-            _t('设置按钮'),  // 这是文本框的标题
+            _t('设置按钮'), 
             _t('在 post.php 文件中的是<a href="https://github.com/HelloWuJiaYi/PostToc" target="_blank" style="color: #ff5500;">适当位置</a>插入以上代码，用来设置 “隐藏/显示目录"的按钮。')
         );
         $instructions->input->setAttribute('style', 'width: 100%; height: 100%; background-color: #f9f9f9; border: 1px solid #ddd;');
@@ -45,11 +45,10 @@ class PostToc_Plugin implements Typecho_Plugin_Interface
             array('1' => '是', '0' => '否'),
             '1', 
             _t('默认显示目录'),  // 这是单选按钮的标题
-            _t('选择文章页面加载时是否显示目录。')
+            _t('设置加载文章页面时是否显示目录。')
         );
         $form->addInput($defaultDisplay);
     }
-
 
     public static function personalConfig(Typecho_Widget_Helper_Form $form){}
 
