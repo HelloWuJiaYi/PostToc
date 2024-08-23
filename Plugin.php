@@ -33,7 +33,7 @@ class PostToc_Plugin implements Typecho_Plugin_Interface
             '<!-- 隐藏/显示目录按钮 -->
 <button id="toc-toggle" class="toc-toggle"></button>',
             _t('设置按钮'), 
-            _t('在 post.php 文件中的是<a href="https://github.com/HelloWuJiaYi/PostToc" target="_blank" style="color: #ff5500;">适当位置</a>插入以上代码，用来设置 “隐藏/显示目录"的按钮。')
+            _t('在 post.php 文件中的<a href="https://github.com/HelloWuJiaYi/PostToc" target="_blank" style="color: #ff5500;">适当位置</a>插入以上代码，用来设置 “隐藏/显示目录"的按钮。')
         );
         $instructions->input->setAttribute('style', 'width: 100%; height: 100%; background-color: #f9f9f9; border: 1px solid #ddd;');
         $instructions->input->setAttribute('readonly', 'readonly');
