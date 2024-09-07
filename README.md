@@ -23,12 +23,8 @@
 
 ## 安装效果
 
-目录效果：[我的博客](https://www.wujiayi.vip/index.php/archives/210/)
-
-![微信截图_20240907210030](https://github.com/user-attachments/assets/d3097b9b-10e4-457d-a4bf-7a7d7380aa47)
-
-![微信截图_20240907210128](https://github.com/user-attachments/assets/6f2d20cb-30eb-4d2f-9ed6-71db71fef3fa)
-
+目录效果：[博客](https://www.wujiayi.vip/index.php/archives/210/)
+(点击右下角“显示目录”)
 
 ## 版本更新
 
