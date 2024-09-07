@@ -21,6 +21,13 @@
 
 ![WX20240816-115348@2x](https://github.com/user-attachments/assets/8b48f456-ad76-4467-a44c-3df37e1cce9c)
 
+## 安装效果
+
+![微信截图_20240907210030](https://github.com/user-attachments/assets/d3097b9b-10e4-457d-a4bf-7a7d7380aa47)
+
+![微信截图_20240907210128](https://github.com/user-attachments/assets/6f2d20cb-30eb-4d2f-9ed6-71db71fef3fa)
+
+
 ## 版本更新
 
 ### 2024-08-17 V1.1.0: 
