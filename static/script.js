@@ -1,7 +1,22 @@
 document.addEventListener("DOMContentLoaded", function () {
-    var content = document.querySelector('.post-content');
+
+    var selectors = [
+        '.post-content', 
+        '.entry-content', 
+        '.article-content', 
+        '.markdown-body', 
+        '.content-body' 
+    ];
+
+    var content = null;
+
+    for (var i = 0; i < selectors.length; i++) {
+        content = document.querySelector(selectors[i]);
+        if (content) break;
+    }
+
     if (!content) {
-        console.error("无法找到文章内容容器。请检查类名。");
+        console.error("无法找到文章内容容器。请检查类名或添加新的选择器。");
         return;
     }
 
@@ -138,8 +153,7 @@ document.addEventListener("DOMContentLoaded", function () {
     tocToggle.className = 'toc-toggle';
     document.body.appendChild(tocToggle);
 
-    // 设置目录和按钮的初始状态
-    if (defaultDisplay === '0') {
+    if (typeof defaultDisplay !== 'undefined' && defaultDisplay === '0') {
         toc.classList.add('hidden');
         tocToggle.textContent = '显示目录';
         tocToggle.style.backgroundColor = '#487b96';
