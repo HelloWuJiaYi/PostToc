@@ -28,10 +28,10 @@
 
 ## 适配主题列表 :hourglass:
 
-｜主题名称｜是否适配｜
-｜---｜---｜
-｜Typecho 的默认主题｜已适配 :white_check_mark:｜
-｜Jasmine｜已适配 :white_check_mark:｜
+|主题名称 | 是否适配|
+| --- | --- |
+|Typecho 的默认主题|已适配 :white_check_mark:|
+|Jasmine|已适配 :white_check_mark:|
 
 没有适配的主题可以在 Issues 上反馈
 
