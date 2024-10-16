@@ -5,7 +5,8 @@ document.addEventListener("DOMContentLoaded", function () {
         '.entry-content', 
         '.article-content', 
         '.markdown-body', 
-        '.content-body' 
+        '.content-body',
+        '.joe_detail'
     ];
 
     var content = null;
@@ -59,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (targetElement) {
                 window.scrollTo({
-                    top: targetElement.offsetTop - 10,
+                    top: targetElement.offsetTop - navbarOffset,  // 使用偏移量
                     behavior: 'smooth'
                 });
 
