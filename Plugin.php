@@ -10,6 +10,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
  * 
  * @package PostToc
  * @version 1.3.0
+ * @author 吴佳轶
  * @link https://www.wujiayi.vip
  */
 
@@ -44,11 +45,11 @@ class PostToc_Plugin implements Typecho_Plugin_Interface
             array('1' => '是', '0' => '否'),
             '1', 
             _t('默认显示目录'),  
-            _t('设置加载文章页面时，是否显示目录。')
+            _t('设置加载文章页面时是否显示目录。')
         );
         $form->addInput($defaultDisplay);
 
-        // 添加滚动偏移量选项
+        // 滚动偏移量设置
         $offset = new Typecho_Widget_Helper_Form_Element_Text(
             'offset', 
             NULL, 
@@ -57,6 +58,16 @@ class PostToc_Plugin implements Typecho_Plugin_Interface
             _t('设置标题滚动时的偏移量，以像素为单位，避免被导航栏遮挡。')
         );
         $form->addInput($offset);
+
+        // 手机端目录按钮显示设置
+        $mobileDisplay = new Typecho_Widget_Helper_Form_Element_Radio(
+            'mobileDisplay', 
+            array('1' => '显示', '0' => '隐藏'),
+            '1', 
+            _t('手机端显示目录按钮'), 
+            _t('选择是否在手机端显示目录按钮。')
+        );
+        $form->addInput($mobileDisplay);
     }
 
     public static function personalConfig(Typecho_Widget_Helper_Form $form){}
@@ -75,10 +86,12 @@ class PostToc_Plugin implements Typecho_Plugin_Interface
         if ($widget->is('single') && !$widget->is('page')) {
             $defaultDisplay = Typecho_Widget::widget('Widget_Options')->plugin('PostToc')->defaultDisplay;
             $offset = Typecho_Widget::widget('Widget_Options')->plugin('PostToc')->offset;
-            
+            $mobileDisplay = Typecho_Widget::widget('Widget_Options')->plugin('PostToc')->mobileDisplay;
+
             echo '<script>';
             echo 'var defaultDisplay = ' . json_encode($defaultDisplay) . ';';
-            echo 'var navbarOffset = ' . json_encode($offset) . ';';  // 输出偏移量
+            echo 'var navbarOffset = ' . json_encode($offset) . ';';
+            echo 'var mobileDisplay = ' . json_encode($mobileDisplay) . ';';  // 输出手机端显示设置
             echo '</script>';
             echo '<script src="' . Helper::options()->pluginUrl . '/PostToc/static/script.js"></script>';
         }
