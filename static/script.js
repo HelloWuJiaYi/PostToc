@@ -1,5 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+    // 检查是否在手机端显示目录按钮
+    if (typeof mobileDisplay !== 'undefined' && mobileDisplay === '0' && window.innerWidth <= 768) {
+        return;  // 不显示目录按钮，直接退出
+    }
+    
     var selectors = [
         '.post-content', 
         '.entry-content', 
