@@ -53,7 +53,7 @@ class PostToc_Plugin implements Typecho_Plugin_Interface
         $offset = new Typecho_Widget_Helper_Form_Element_Text(
             'offset', 
             NULL, 
-            '60',  // 默认偏移量，单位为像素
+            '0',  // 默认偏移量，单位为像素
             _t('滚动偏移量'),  
             _t('设置标题滚动时的偏移量，以像素为单位，避免被导航栏遮挡。')
         );
