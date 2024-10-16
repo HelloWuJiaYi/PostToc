@@ -44,7 +44,7 @@ class PostToc_Plugin implements Typecho_Plugin_Interface
             array('1' => '是', '0' => '否'),
             '1', 
             _t('默认显示目录'),  
-            _t('设置加载文章页面时是否显示目录。')
+            _t('设置加载文章页面时，是否显示目录。')
         );
         $form->addInput($defaultDisplay);
 
