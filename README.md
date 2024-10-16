@@ -32,11 +32,16 @@
 | --- | --- |
 |Typecho 的默认主题|已适配 :white_check_mark:|
 |Jasmine|已适配 :white_check_mark:|
+|Joe|已适配 :white_check_mark:|
 
 没有适配的主题可以在 Issues 上反馈
 
 ## 版本更新 :floppy_disk:
 
+### 2024-09-23 V1.3.0: 
+1. 后台可以设置目录滚动时的偏移量，以像素为单位，避免被导航栏遮挡。
+2. 适配更多主题。
+   
 ### 2024-09-23 V1.2.0: 
 1. 适配更多主题。
 
