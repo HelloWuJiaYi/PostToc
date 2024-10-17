@@ -32,7 +32,7 @@ class PostToc_Plugin implements Typecho_Plugin_Interface
             array('1' => '是', '0' => '否'),
             '1', 
             _t('默认显示目录'),  
-            _t('设置加载文章页面时是否显示目录。')
+            _t('加载文章页面时，是否显示目录。')
         );
         $form->addInput($defaultDisplay);
 
@@ -41,7 +41,7 @@ class PostToc_Plugin implements Typecho_Plugin_Interface
             NULL, 
             '10', 
             _t('滚动偏移量'),  
-            _t('设置标题滚动时的偏移量，以像素为单位，避免被导航栏遮挡。')
+            _t('文章目录项距离顶部的偏移量，以像素为单位，避免被导航栏遮挡。')
         );
         $form->addInput($offset);
 
