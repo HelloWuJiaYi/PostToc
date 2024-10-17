@@ -26,17 +26,6 @@ class PostToc_Plugin implements Typecho_Plugin_Interface
 
     public static function config(Typecho_Widget_Helper_Form $form)
     {
-        $instructions = new Typecho_Widget_Helper_Form_Element_Textarea(
-            'instructions', 
-            NULL, 
-            '<!-- 隐藏/显示目录按钮 -->
-            <button id="toc-toggle" class="toc-toggle"></button>',
-            _t('设置按钮'), 
-            _t('在 post.php 文件中的<a href="https://github.com/HelloWuJiaYi/PostToc" target="_blank" style="color: #ff5500;">适当位置</a>插入以上代码，用来设置 “隐藏/显示目录"的按钮。')
-        );
-        $instructions->input->setAttribute('style', 'width: 100%; height: 100%; background-color: #f9f9f9; border: 1px solid #ddd;');
-        $instructions->input->setAttribute('readonly', 'readonly');
-        $form->addInput($instructions);
         
         $defaultDisplay = new Typecho_Widget_Helper_Form_Element_Radio(
             'defaultDisplay', 
@@ -119,9 +108,6 @@ class PostToc_Plugin implements Typecho_Plugin_Interface
             echo 'var defaultDisplay = ' . json_encode($defaultDisplay) . ';';
             echo 'var navbarOffset = ' . json_encode($offset) . ';';
             echo 'var mobileDisplay = ' . json_encode($mobileDisplay) . ';';  // 输出手机端显示设置
-            echo '</script>';
-            echo '<script src="' . Helper::options()->pluginUrl . '/PostToc/static/script.js"></script>';
-            echo '<script>';
             echo 'var textColor = ' . json_encode($textColor) . ';';
             echo 'var activeTextColor = ' . json_encode($activeTextColor) . ';';
             echo 'var backgroundColor = ' . json_encode($backgroundColor) . ';';
