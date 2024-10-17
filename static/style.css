@@ -1,57 +1,86 @@
-/* 目录样式 */
 #post-toc {
     position: fixed;
-    left: 40px; /* 默认距离浏览器左边 */
-    top: 200px; /* 作为默认的顶部偏移 */
+    left: 40px;
+    top: 200px;
+    width: 300px; 
     background: #ffffff;
     padding: 15px;
-    border: 1px solid #ddd;
+    border: 1px solid #fff;
     overflow-y: auto;
+    padding-top: 0; 
     max-height: 70vh;
     z-index: 1000;
     cursor: move;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.16);
+    box-shadow: 0 0px 15px rgba(0, 0, 0, 0.11);
     border-radius: 8px;
     transition: box-shadow 0.3s ease, transform 0.2s ease;
-    display: block; /* 默认显示 */
+    scrollbar-width: thin; 
+    scrollbar-color: rgba(0, 0, 0, 0.2) transparent; 
+}
+
+#post-toc::-webkit-scrollbar {
+    width: 2px;
+}
+
+#post-toc::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2); 
+    border-radius: 10px; 
+}
+
+#post-toc::-webkit-scrollbar-track {
+    background: transparent; 
 }
 
 #post-toc.hidden {
-    display: none; /* 隐藏时 */
+    display: none;
 }
 
 #post-toc ul {
     list-style: none;
-    padding: 0;
+    padding: 10px 0 0 0; 
     margin: 0;
 }
 
+
 #post-toc ul li {
-    margin-bottom: 5px;
+    margin-bottom: 3px;
 }
 
-#post-toc h3 {
-    margin: 0 0 10px 0; /* 去掉顶部和底部的间距 */
-    font-size: 18px; /* 自定义字体大小 */
-    font-weight: bold; /* 自定义字体粗细 */
-    color: #494949; /* 自定义颜色 */
-    text-align: center; /* 中心对齐 */
-    padding-bottom: 5px; /* 下方填充，增加分隔感 */
-    border-bottom: 1px solid #ddd; /* 底部边框 */
+ #post-toc h3 {
+    position: sticky;
+    top: 0;
+    background-color: #ffffff;
+    z-index: 1;
+    letter-spacing: 4px; 
+    padding: 10px 0;
+    margin: 0; 
+    font-size: 16px;
+    font-weight: bold;
+    color: #5a5a5a;
+    text-align: center;
+    border-bottom: 1px solid #ebebeb;
 }
 
 #post-toc ul li a {
+    color: #777777; 
+    font-size: 14px; 
+    letter-spacing: 0.2px; 
     text-decoration: none;
     display: block;
-    padding: 2px 0;
-    transition: color 0.2s ease;
+    padding: 5px 5px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-#post-toc ul li a:hover {
-    text-decoration: underline;
+#post-toc ul li a:hover,
+#post-toc ul li a.active {
+    background-color: rgba(200, 200, 200, 0.2);
+    color: #bc6462;
 }
 
-/* 目录切换按钮样式 */
 .toc-toggle {
     position: fixed;
     bottom: 20px;
@@ -71,12 +100,14 @@
     background-color: #43677a;
 }
 
-/* 小屏幕上的目录和按钮布局 */
 @media (max-width: 768px) {
     #post-toc {
-        right: 20px; /* 在按钮左边 */
-        bottom: 70px; /* 调整为在按钮上方 */
-        left: auto; /* 移除左对齐 */
-        top: auto;
+        position: fixed;
+        bottom: 70px; 
+        right: 20px;
+        left: auto; 
+        top: auto; 
+        width: 300px; 
     }
 }
+
