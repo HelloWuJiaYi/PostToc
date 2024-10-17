@@ -1,8 +1,21 @@
 document.addEventListener("DOMContentLoaded", function () {
-
-    // 检查是否在手机端显示目录按钮
+    
     if (typeof mobileDisplay !== 'undefined' && mobileDisplay === '0' && window.innerWidth <= 768) {
-        return;  // 不显示目录按钮，直接退出
+        if (document.querySelector('#post-toc')) {
+            document.querySelector('#post-toc').remove();
+        }
+        if (document.querySelector('.toc-toggle')) {
+            document.querySelector('.toc-toggle').remove();
+        }
+        return; 
+    }
+    
+    document.querySelectorAll('#post-toc ul li a').forEach(function(a) {
+        a.style.color = textColor;  
+    });
+    
+    if (typeof mobileDisplay !== 'undefined' && mobileDisplay === '0' && window.innerWidth <= 768) {
+        return; 
     }
     
     var selectors = [
@@ -57,60 +70,75 @@ document.addEventListener("DOMContentLoaded", function () {
         tocList.appendChild(li);
     });
 
+    // 设置目录的位置，根据不同屏幕宽度适应 PC 和手机端
+    function setTocPosition() {
+        const contentRect = content.getBoundingClientRect();
+
+        if (window.innerWidth > 768) { 
+            // PC 端，目录位于内容容器左侧 20 像素处
+            toc.style.position = 'fixed';
+            toc.style.top = '200px';
+            toc.style.left = (contentRect.left - toc.offsetWidth - 20) + 'px';
+        } else { 
+            // 手机端，目录位于按钮上方
+            toc.style.position = 'fixed';
+            toc.style.bottom = '70px';
+            toc.style.right = '20px';
+            toc.style.left = 'auto';
+            toc.style.top = 'auto';
+            toc.style.width = '300px'; 
+        }
+    }
+    
+    setTocPosition();
+    
+    window.addEventListener('resize', setTocPosition);
+    
     toc.addEventListener('click', function (event) {
         if (event.target.tagName.toLowerCase() === 'a') {
             event.preventDefault();
             var targetId = event.target.getAttribute('href').substring(1);
             var targetElement = document.getElementById(targetId);
-
+    
             if (targetElement) {
                 window.scrollTo({
-                    top: targetElement.offsetTop - navbarOffset,  // 使用偏移量
+                    top: targetElement.offsetTop - navbarOffset, 
                     behavior: 'smooth'
                 });
-
+    
                 history.pushState(null, null, '#' + targetId);
             }
         }
     });
-
+    
     function highlightCurrentHeading() {
         let currentHeadingId = null;
-        let offset = window.innerHeight * 0.25;
+        const offset = 100;
 
-        headings.forEach(function (heading) {
-            const rect = heading.getBoundingClientRect();
+        for (let i = 0; i < headings.length; i++) {
+            const rect = headings[i].getBoundingClientRect();
+            if (rect.top <= offset) {
+                currentHeadingId = headings[i].id;
+            } else {
+                break;
+            }
+        }
 
-            if (rect.top < offset && rect.bottom > 0) {
-                currentHeadingId = heading.id;
+        tocList.querySelectorAll('a').forEach(function (a) {
+            if (a.getAttribute('href').substring(1) === currentHeadingId) {
+                a.classList.add('active');
+                a.style.backgroundColor = backgroundColor;
+                a.style.color = activeTextColor;
+            } else {
+                a.classList.remove('active');
+                a.style.backgroundColor = '';
+                a.style.color = textColor;
             }
         });
-
-        if (currentHeadingId) {
-            tocList.querySelectorAll('a').forEach(function (a) {
-                if (a.getAttribute('href').substring(1) === currentHeadingId) {
-                    a.style.color = '#bc6462';
-                    a.style.textDecoration = 'underline';
-                } else {
-                    a.style.color = '';
-                    a.style.textDecoration = '';
-                }
-            });
-        }
     }
-
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 0) {
-            highlightCurrentHeading();
-        } else {
-            tocList.querySelectorAll('a').forEach(function (a) {
-                a.style.color = '';
-                a.style.textDecoration = '';
-            });
-        }
-    });
-
-    highlightCurrentHeading();
+    
+    window.addEventListener('scroll', highlightCurrentHeading);
+    highlightCurrentHeading(); 
 
     let isDragging = false;
     let startX, startY, initialLeft, initialTop;
@@ -119,7 +147,6 @@ document.addEventListener("DOMContentLoaded", function () {
         if (event.target.tagName.toLowerCase() === 'a') return;
 
         event.preventDefault();
-
         isDragging = true;
         startX = event.clientX;
         startY = event.clientY;
@@ -162,28 +189,13 @@ document.addEventListener("DOMContentLoaded", function () {
     if (typeof defaultDisplay !== 'undefined' && defaultDisplay === '0') {
         toc.classList.add('hidden');
         tocToggle.textContent = '显示目录';
-        tocToggle.style.backgroundColor = '#487b96';
     } else {
         toc.classList.remove('hidden');
         tocToggle.textContent = '隐藏目录';
-        tocToggle.style.backgroundColor = '#6f7f87';
     }
 
     tocToggle.addEventListener('click', function () {
         toc.classList.toggle('hidden');
-
-        if (toc.classList.contains('hidden')) {
-            tocToggle.textContent = '显示目录';
-            tocToggle.style.backgroundColor = '#487b96';
-        } else {
-            tocToggle.textContent = '隐藏目录';
-            tocToggle.style.backgroundColor = '#6f7f87';
-        }
+        tocToggle.textContent = toc.classList.contains('hidden') ? '显示目录' : '隐藏目录';
     });
-
-    if (toc.classList.contains('hidden')) {
-        tocToggle.style.backgroundColor = '#487b96';
-    } else {
-        tocToggle.style.backgroundColor = '#6f7f87';
-    }
 });
