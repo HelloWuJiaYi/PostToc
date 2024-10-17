@@ -9,7 +9,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
  * 详细说明及更新请查阅： <a target="_blank" href="https://github.com/HelloWuJiaYi/PostToc/" rel="noopener noreferrer">PostToc</a> 
  * 
  * @package PostToc
- * @version 1.3.0
+ * @version 1.4.0
  * @author 吴佳轶
  * @link https://www.wujiayi.vip
  */
@@ -26,12 +26,11 @@ class PostToc_Plugin implements Typecho_Plugin_Interface
 
     public static function config(Typecho_Widget_Helper_Form $form)
     {
-        // 文本说明
         $instructions = new Typecho_Widget_Helper_Form_Element_Textarea(
             'instructions', 
             NULL, 
             '<!-- 隐藏/显示目录按钮 -->
-<button id="toc-toggle" class="toc-toggle"></button>',
+            <button id="toc-toggle" class="toc-toggle"></button>',
             _t('设置按钮'), 
             _t('在 post.php 文件中的<a href="https://github.com/HelloWuJiaYi/PostToc" target="_blank" style="color: #ff5500;">适当位置</a>插入以上代码，用来设置 “隐藏/显示目录"的按钮。')
         );
@@ -39,7 +38,6 @@ class PostToc_Plugin implements Typecho_Plugin_Interface
         $instructions->input->setAttribute('readonly', 'readonly');
         $form->addInput($instructions);
         
-        // 默认显示选项
         $defaultDisplay = new Typecho_Widget_Helper_Form_Element_Radio(
             'defaultDisplay', 
             array('1' => '是', '0' => '否'),
@@ -49,11 +47,10 @@ class PostToc_Plugin implements Typecho_Plugin_Interface
         );
         $form->addInput($defaultDisplay);
 
-        // 滚动偏移量设置
         $offset = new Typecho_Widget_Helper_Form_Element_Text(
             'offset', 
             NULL, 
-            '10',  // 默认偏移量，单位为像素
+            '10', 
             _t('滚动偏移量'),  
             _t('设置标题滚动时的偏移量，以像素为单位，避免被导航栏遮挡。')
         );
@@ -68,6 +65,33 @@ class PostToc_Plugin implements Typecho_Plugin_Interface
             _t('选择是否在手机端显示目录按钮。')
         );
         $form->addInput($mobileDisplay);
+        
+        $textColor = new Typecho_Widget_Helper_Form_Element_Text(
+            'textColor', 
+            NULL, 
+            '#777777', 
+            _t('目录项文字颜色'),  
+            _t('输入十六进制颜色代码，例如：#777777。')
+        );
+        $form->addInput($textColor);
+        
+        $activeTextColor = new Typecho_Widget_Helper_Form_Element_Text(
+            'activeTextColor', 
+            NULL, 
+            '#bc6462', 
+            _t('选中状态文字颜色'),  
+            _t('输入十六进制颜色代码，例如：#bc6462。')
+        );
+        $form->addInput($activeTextColor);
+        
+        $backgroundColor = new Typecho_Widget_Helper_Form_Element_Text(
+            'backgroundColor', 
+            NULL, 
+            '#C8C8C870', 
+            _t('目录项背景色块颜色（含透明度）'),  
+            _t('输入十六进制颜色代码，包括透明度，例如：#C8C8C870。最后两位表示透明度，00 为全透明，FF 为不透明。')
+        );
+        $form->addInput($backgroundColor);
     }
 
     public static function personalConfig(Typecho_Widget_Helper_Form $form){}
@@ -87,11 +111,20 @@ class PostToc_Plugin implements Typecho_Plugin_Interface
             $defaultDisplay = Typecho_Widget::widget('Widget_Options')->plugin('PostToc')->defaultDisplay;
             $offset = Typecho_Widget::widget('Widget_Options')->plugin('PostToc')->offset;
             $mobileDisplay = Typecho_Widget::widget('Widget_Options')->plugin('PostToc')->mobileDisplay;
+            $textColor = Typecho_Widget::widget('Widget_Options')->plugin('PostToc')->textColor;
+            $activeTextColor = Typecho_Widget::widget('Widget_Options')->plugin('PostToc')->activeTextColor;
+            $backgroundColor = Typecho_Widget::widget('Widget_Options')->plugin('PostToc')->backgroundColor;
 
             echo '<script>';
             echo 'var defaultDisplay = ' . json_encode($defaultDisplay) . ';';
             echo 'var navbarOffset = ' . json_encode($offset) . ';';
             echo 'var mobileDisplay = ' . json_encode($mobileDisplay) . ';';  // 输出手机端显示设置
+            echo '</script>';
+            echo '<script src="' . Helper::options()->pluginUrl . '/PostToc/static/script.js"></script>';
+            echo '<script>';
+            echo 'var textColor = ' . json_encode($textColor) . ';';
+            echo 'var activeTextColor = ' . json_encode($activeTextColor) . ';';
+            echo 'var backgroundColor = ' . json_encode($backgroundColor) . ';';
             echo '</script>';
             echo '<script src="' . Helper::options()->pluginUrl . '/PostToc/static/script.js"></script>';
         }
