@@ -14,10 +14,6 @@ document.addEventListener("DOMContentLoaded", function () {
         a.style.color = textColor;  
     });
     
-    if (typeof mobileDisplay !== 'undefined' && mobileDisplay === '0' && window.innerWidth <= 768) {
-        return; 
-    }
-    
     var selectors = [
         '.post-content', 
         '.entry-content', 
@@ -70,17 +66,14 @@ document.addEventListener("DOMContentLoaded", function () {
         tocList.appendChild(li);
     });
 
-    // 设置目录的位置，根据不同屏幕宽度适应 PC 和手机端
     function setTocPosition() {
         const contentRect = content.getBoundingClientRect();
 
         if (window.innerWidth > 768) { 
-            // PC 端，目录位于内容容器左侧 20 像素处
             toc.style.position = 'fixed';
             toc.style.top = '200px';
-            toc.style.left = (contentRect.left - toc.offsetWidth - 20) + 'px';
+            toc.style.left = (contentRect.left - toc.offsetWidth - 65) + 'px';
         } else { 
-            // 手机端，目录位于按钮上方
             toc.style.position = 'fixed';
             toc.style.bottom = '70px';
             toc.style.right = '20px';
