@@ -8,9 +8,9 @@
 2. 将文件夹放在插件目录 `~/usr/plugins/`。
 3. 启动插件。
 
-～～## 隐藏/显示目录按钮 :wrench:～～
+## ~~隐藏/显示目录按钮 :wrench:~~
 
-～～将下方代码插入在 `usr/themes/default/post.php` 文件中。～～
+~~将下方代码插入在 `usr/themes/default/post.php` 文件中。~~
 
 ```
 <!-- 隐藏/显示目录按钮 -->
