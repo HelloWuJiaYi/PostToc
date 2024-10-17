@@ -2,11 +2,9 @@
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
 /**
- * 文章目录：
+ * 一个可以随意拖动的目录，右下角可以选择显示或隐藏。<br>
  * 
- * 鼠标可以拖动目录到任意位置，点击页面右下角的按钮可以显示目录或隐藏目录。<br>
- * 
- * 详细说明及更新请查阅： <a target="_blank" href="https://github.com/HelloWuJiaYi/PostToc/" rel="noopener noreferrer">PostToc</a> 
+ * 详细说明及插件更新，请查阅： <a target="_blank" href="https://github.com/HelloWuJiaYi/PostToc/" rel="noopener noreferrer">PostToc</a> 
  * 
  * @package PostToc
  * @version 1.4.0
