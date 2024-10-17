@@ -12,10 +12,7 @@
 
 ~~将下方代码插入在 `usr/themes/default/post.php` 文件中。~~
 
-```
-<!-- 隐藏/显示目录按钮 -->
-<button id="toc-toggle" class="toc-toggle"></button>
-```
+**现在无需在 post.php 中插入代码，插件开箱即用～**
 
 ## 安装效果 :tada:
 
