@@ -1,4 +1,4 @@
-## PostToc :page_with_curl:
+## PostToc 1.4.0 :page_with_curl:
 
 适用于 Typecho 1.2.1 版本的文章目录插件，可以使用鼠标随意拖动目录到任意位置，避免遮挡文章内容。文章页面右下角可以选择显示或隐藏目录。
 
