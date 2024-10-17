@@ -24,7 +24,7 @@ class PostToc_Plugin implements Typecho_Plugin_Interface
 
     public static function deactivate(){}
 
-    public static function config(Typecho_Widget_Helper_Form $form)
+public static function config(Typecho_Widget_Helper_Form $form)
     {
         
         $defaultDisplay = new Typecho_Widget_Helper_Form_Element_Radio(
@@ -36,15 +36,6 @@ class PostToc_Plugin implements Typecho_Plugin_Interface
         );
         $form->addInput($defaultDisplay);
 
-        $offset = new Typecho_Widget_Helper_Form_Element_Text(
-            'offset', 
-            NULL, 
-            '10', 
-            _t('滚动偏移量'),  
-            _t('文章目录项距离顶部的偏移量，以像素为单位，避免被导航栏遮挡。')
-        );
-        $form->addInput($offset);
-
         // 手机端目录按钮显示设置
         $mobileDisplay = new Typecho_Widget_Helper_Form_Element_Radio(
             'mobileDisplay', 
@@ -55,6 +46,15 @@ class PostToc_Plugin implements Typecho_Plugin_Interface
         );
         $form->addInput($mobileDisplay);
         
+        $offset = new Typecho_Widget_Helper_Form_Element_Text(
+            'offset', 
+            NULL, 
+            '10', 
+            _t('滚动偏移量'),  
+            _t('文章目录项距离顶部的偏移量，以像素为单位，避免被导航栏遮挡。')
+        );
+        $form->addInput($offset);
+
         $textColor = new Typecho_Widget_Helper_Form_Element_Text(
             'textColor', 
             NULL, 
