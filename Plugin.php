@@ -7,7 +7,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
  * 详细说明及插件更新，请查阅： <a target="_blank" href="https://github.com/HelloWuJiaYi/PostToc/" rel="noopener noreferrer">PostToc</a> 
  * 
  * @package PostToc
- * @version 1.4.0
+ * @version 1.4.1
  * @author 吴佳轶
  * @link https://www.wujiayi.vip
  */
@@ -49,10 +49,30 @@ public static function config(Typecho_Widget_Helper_Form $form)
             NULL, 
             '10', 
             _t('滚动偏移量'),  
-            _t('文章目录项距离顶部的偏移量，以像素为单位，避免被导航栏遮挡。')
+            _t('文章内容的目录项距离页面顶部的偏移量，以像素为单位，避免被隐藏导航栏遮挡。')
         );
         $form->addInput($offset);
 
+        // 新增目录上下位置偏移量设置
+        $verticalOffset = new Typecho_Widget_Helper_Form_Element_Text(
+            'verticalOffset', 
+            NULL, 
+            '0', 
+            _t('目录垂直位置偏移量'),  
+            _t('负数向上移动，正数向下移动，以像素为单位。')
+        );
+        $form->addInput($verticalOffset);
+    
+        // 新增目录左右位置偏移量设置
+        $horizontalOffset = new Typecho_Widget_Helper_Form_Element_Text(
+            'horizontalOffset', 
+            NULL, 
+            '0', 
+            _t('目录水平位置偏移量'),  
+            _t('负数向左移动，正数向右移动，以像素为单位。')
+        );
+        $form->addInput($horizontalOffset);
+    
         $textColor = new Typecho_Widget_Helper_Form_Element_Text(
             'textColor', 
             NULL, 
@@ -101,6 +121,8 @@ public static function config(Typecho_Widget_Helper_Form $form)
             $textColor = Typecho_Widget::widget('Widget_Options')->plugin('PostToc')->textColor;
             $activeTextColor = Typecho_Widget::widget('Widget_Options')->plugin('PostToc')->activeTextColor;
             $backgroundColor = Typecho_Widget::widget('Widget_Options')->plugin('PostToc')->backgroundColor;
+            $verticalOffset = Typecho_Widget::widget('Widget_Options')->plugin('PostToc')->verticalOffset; // 获取垂直偏移量
+            $horizontalOffset = Typecho_Widget::widget('Widget_Options')->plugin('PostToc')->horizontalOffset; // 获取水平偏移量
 
             echo '<script>';
             echo 'var defaultDisplay = ' . json_encode($defaultDisplay) . ';';
@@ -109,6 +131,8 @@ public static function config(Typecho_Widget_Helper_Form $form)
             echo 'var textColor = ' . json_encode($textColor) . ';';
             echo 'var activeTextColor = ' . json_encode($activeTextColor) . ';';
             echo 'var backgroundColor = ' . json_encode($backgroundColor) . ';';
+            echo 'var verticalOffset = ' . json_encode($verticalOffset) . ';'; // 输出垂直偏移量
+            echo 'var horizontalOffset = ' . json_encode($horizontalOffset) . ';'; // 输出水平偏移量
             echo '</script>';
             echo '<script src="' . Helper::options()->pluginUrl . '/PostToc/static/script.js"></script>';
         }
