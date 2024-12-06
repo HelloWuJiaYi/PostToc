@@ -8,12 +8,6 @@
 2. 将文件夹放在插件目录 `~/usr/plugins/`。
 3. 启动插件。
 
-## ~~隐藏/显示目录按钮 :wrench:~~
-
-~~将下方代码插入在 `usr/themes/default/post.php` 文件中。~~
-
-**现在无需在 post.php 中插入代码，插件开箱即用～**
-
 ## 安装效果 :tada:
 
 目录效果：[博客](https://www.wujiayi.vip/index.php/archives/210/)
