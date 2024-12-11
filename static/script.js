@@ -48,8 +48,11 @@ document.addEventListener("DOMContentLoaded", function () {
     toc.innerHTML = '<h3>目录</h3><ul></ul>';
     content.parentNode.insertBefore(toc, content);
 
-    // 获取文章中的所有标题元素
-    var headings = content.querySelectorAll('h1, h2, h3, h4, h5, h6');
+    // 获取文章中的所有标题元素，并过滤掉 joe-card-describe 容器内的标题
+    var headings = Array.from(content.querySelectorAll('h1, h2, h3, h4, h5, h6')).filter(function (heading) {
+        return !heading.closest('joe-card-describe'); // 确保标题不在 joe-card-describe 容器内
+    });
+    
     var tocList = toc.querySelector('ul');
 
     // 计算目录中最小的标题等级（如h1、h2、h3等）
