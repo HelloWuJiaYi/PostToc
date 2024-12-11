@@ -49,7 +49,7 @@ public static function config(Typecho_Widget_Helper_Form $form)
             NULL, 
             '10', 
             _t('滚动偏移量'),  
-            _t('文章内容的目录项距离页面顶部的偏移量，以像素为单位，避免被隐藏导航栏遮挡。')
+            _t('设置文章标题距离页面导航栏的偏移量，以像素为单位，避免被动态导航栏遮挡。')
         );
         $form->addInput($offset);
 
